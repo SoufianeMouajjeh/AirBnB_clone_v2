@@ -3,12 +3,12 @@ from datetime import datetime
 import os
 
 @task
-def do_pack(create):
+def do_pack(c):
     """Generates a .tgz archive from the contents of the web_static folder."""
     try:
         # Create the versions folder if it doesn't exist
         if not os.path.exists("versions"):
-            create.local("mkdir versions")
+            c.local("mkdir versions")
 
         # Generate the archive name using the current timestamp
         timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
