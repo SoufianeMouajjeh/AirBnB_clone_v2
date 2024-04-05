@@ -3,12 +3,13 @@
     ..an archive to your web servers, using the function do_deploy: """
 
 
-from fabric.api import *
+from fabric.api import env, put, run
 from datetime import datetime
 from os.path import exists
 
 
-env.hosts = ['52.203.91.47', '100.26.152.120']
+env.hosts = ['34.229.254.181', '100.25.223.158']
+
 
 def do_deploy(archive_path):
     """ distributes an archive to my web servers
@@ -30,5 +31,6 @@ def do_deploy(archive_path):
         run("ln -s {}/ /data/web_static/current".format(no_tgz))
 
         return True
-    except:
+    except Exception as e:
+        print("Exception occurred:", e)
         return False
